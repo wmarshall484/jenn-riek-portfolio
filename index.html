@@ -62,7 +62,7 @@
         </div>
 
         <div class="rail__footer">
-          <a class="rail__btn" href="#message">Email me</a>
+          <a class="rail__btn" href="#message">Contact me</a>
           <a class="rail__btn" href="Jenn-Riek-Resume.pdf" download="Jenn-Riek-Resume.pdf">Download r&eacute;sum&eacute;</a>
           <a class="rail__cta" href="https://www.linkedin.com/in/jenn-riek/" target="_blank" rel="noopener">Message on LinkedIn</a>
           <span class="rail__caption">Open to full-time roles &middot; NYC or remote</span>
@@ -84,7 +84,7 @@
               <a class="menu__link" href="#events">Events</a>
             </div>
           </details>
-          <a class="nav__cta" href="#contact">Get in touch</a>
+          <a class="nav__cta" href="#contact">Contact me</a>
         </div>
       </nav>
 
@@ -487,9 +487,9 @@
           <input type="hidden" name="_captcha" value="false">
           <input class="message__honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
           <h3 class="message__title">Send me a message</h3>
-          <label class="message__field">Name<input type="text" name="name" autocomplete="name" required></label>
-          <label class="message__field">Email<input type="email" name="email" autocomplete="email" required></label>
-          <label class="message__field message__field--wide">Message<textarea name="message" rows="5" required></textarea></label>
+          <label class="message__field"><span>Name<span class="message__req" aria-hidden="true">*</span></span><input type="text" name="name" autocomplete="name" required></label>
+          <label class="message__field"><span>Email<span class="message__req" aria-hidden="true">*</span></span><input type="email" name="email" autocomplete="email" required></label>
+          <label class="message__field message__field--wide"><span>Message<span class="message__req" aria-hidden="true">*</span></span><textarea name="message" rows="5" required></textarea></label>
           <div class="message__field--wide"><button class="message__submit" type="submit">Send message</button></div>
         </form>
       </section>
@@ -500,5 +500,27 @@
 
     </div>
   </div>
+
+  <script>
+    // `required` accepts answers that are only spaces; reject those too so
+    // every message arrives with a name, an email, and something to say.
+    (function () {
+      var form = document.getElementById('message');
+      var fields = form.querySelectorAll('[required]');
+      Array.prototype.forEach.call(fields, function (field) {
+        field.addEventListener('input', function () { field.setCustomValidity(''); });
+      });
+      form.addEventListener('submit', function (event) {
+        for (var i = 0; i < fields.length; i++) {
+          if (!fields[i].value.trim()) {
+            event.preventDefault();
+            fields[i].setCustomValidity('Please fill out this field.');
+            fields[i].reportValidity();
+            return;
+          }
+        }
+      });
+    })();
+  </script>
 </body>
 </html>

@@ -1083,6 +1083,7 @@ section[id] { scroll-margin-top: 76px; }
   color: var(--body);
 }
 .message__field--wide { grid-column: 1 / -1; }
+.message__req { margin-left: 3px; color: var(--terracotta); }
 .message__field input,
 .message__field textarea {
   width: 100%;
