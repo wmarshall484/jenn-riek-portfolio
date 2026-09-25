@@ -632,6 +632,14 @@ section[id] { scroll-margin-top: 76px; }
   text-wrap: pretty;
 }
 .study__text + .study__text { margin-top: 10px; }
+.study__text a {
+  color: var(--brick);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.study__text a:hover { text-decoration-thickness: 2px; }
 
 .study__foot {
   margin-top: 18px;
@@ -664,24 +672,34 @@ section[id] { scroll-margin-top: 76px; }
 /* Alternate the image side card to card */
 .study--media-right .study__media { order: 2; }
 .study--media-right .study__body { order: 1; }
-/* Center-cropped media that fills its cell without its own intrinsic height
-   driving the row, so tall images don't stretch the card past its copy. */
-.study__media--center {
+/* Image cell whose size comes from the card, not the image: the frame
+   stretches to the row (at least its min-height) and the image is laid over
+   it, so tall images never stretch the card past its copy. */
+.study__frame {
+  position: relative;
+  display: block;
+  min-width: 0;
+  min-height: 240px;
+  overflow: hidden;
+}
+.study__frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   object-position: center;
-  contain: size;
 }
 /* Show the whole image (text-heavy graphics and logos) instead of cropping
    to fill; the leftover space takes the image's own edge color so it reads
    as one piece. */
-.study__media--contain {
-  object-fit: contain;
-  background: #fff;
-}
-.study__media--lavender { background: #dee3f1; }
+.study__frame--contain { background: #fff; }
+.study__frame--contain img { object-fit: contain; }
+.study__frame--lavender { background: #dee3f1; }
 
 /* Image + copy feature cards (influencer program, brand advocates) */
-.study--feature .study__media { min-height: 320px; }
-.study--advocates .study__media { min-height: 300px; }
+.study--feature .study__frame { min-height: 320px; }
+.study--advocates .study__frame { min-height: 300px; }
 .study--feature .study__body {
   padding: 30px 32px;
   display: flex;
