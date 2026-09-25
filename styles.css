@@ -937,6 +937,16 @@ section[id] { scroll-margin-top: 76px; }
 }
 .social-tile:hover .social-tile__overlay,
 .social-tile:focus-visible .social-tile__overlay { opacity: 1; }
+
+/* Touch screens can't hover, so show the caption as a band below the post
+   instead of an overlay that would cover it. */
+@media (hover: none), (pointer: coarse) {
+  .social-tile__overlay {
+    position: static;
+    opacity: 1;
+    padding: 14px 16px 16px;
+  }
+}
 .social-tile__eyebrow {
   font-size: 11.5px;
   font-weight: 700;
