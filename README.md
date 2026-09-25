@@ -5,8 +5,8 @@ No build step, no framework: one HTML file, one stylesheet, and an `assets/` fol
 
 The site is a two-column "dossier" layout: a fixed terracotta bio rail on the
 left (headshot, positioning, facts, skills, contact) and a scrolling work column
-on the right — an intro, then five work sections (Creative strategy, Content
-strategy, Events, Social media) and a contact band.
+on the right — an intro, then four work sections (Content strategy, Social
+media & influencer, Creative strategy, Events) and a contact band.
 
 ## Files
 
@@ -15,7 +15,7 @@ strategy, Events, Social media) and a contact band.
 | `index.html` | The whole site. Every project card, link, and paragraph lives here. |
 | `styles.css` | Colors, fonts, layout. Tokens are at the top under `:root`. |
 | `assets/work/` | Project images (WebP). `about-jenn.webp` is the headshot. |
-| `assets/social/` | Social-media gallery images (15 are shown, in display order). |
+| `assets/social/` | Social-media post images (the always-on grid, plus the @corporatenatalie influencer card). |
 | `favicon.svg` | Browser-tab icon. |
 | `_headers` | Cloudflare Pages cache headers for `assets/`. |
 
@@ -34,9 +34,9 @@ Every push to `main` redeploys.
 
 ## Editing
 
-- **Change text or a link:** edit `index.html` directly. Work items are `<article>`/`<div>` blocks — `.case-card` (Creative multi-post), `.ad-card` (native ads), `.study` and `.featured` (Content strategy), `.event` (Events).
+- **Change text or a link:** edit `index.html` directly. Work items are `<article>`/`<div>` blocks — `.study` (Content strategy; add `study--media-right` to put the image on the right, and `.study--shots` is the browser-framed website redesign), `.influencer` (influencer cards), `.ad-card` (native ads), `.case-card` (Creative multi-post), `.event` (Events).
 - **Add a project:** copy an existing block in the matching section, swap the image, title, description, and `href`.
-- **Add a social post:** drop the image in `assets/social/`, then copy one `<a class="social-tile">` block in the `#social` section.
+- **Add a social post:** drop the image in `assets/social/`, then copy one `<a class="social-tile">` block in the `.social-grid` of the `#social` section. Tiles fill left to right, row by row, in the order they appear in the HTML.
 - **Swap the headshot:** replace `assets/work/about-jenn.webp` (portrait orientation, roughly 4:5 works best).
 - **Add an email address:** in the `#contact` section, add a second button next to the LinkedIn one:
   `<a class="btn" href="mailto:you@example.com">Email me</a>`
