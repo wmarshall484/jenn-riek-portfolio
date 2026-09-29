@@ -20,7 +20,7 @@ normal block above the work.
 | --- | --- |
 | `index.html` | The whole site. Every project card, link, and paragraph lives here. |
 | `styles.css` | Colors, fonts, layout. Tokens are at the top under `:root`. |
-| `assets/work/` | Project images (WebP). `about-jenn.webp` is the headshot. |
+| `assets/work/` | Project images (WebP). `jenn-profile.webp` is the headshot. |
 | `assets/social/` | Social-media post images used in the always-on grid. |
 | `Jenn-Riek-Resume.pdf` | The résumé behind both "Download résumé" buttons. Replace the file (same name) to update it. It lives at the root, not in `assets/`, because `assets/` is cached for a year. |
 | `favicon.svg` | Browser-tab icon. |
